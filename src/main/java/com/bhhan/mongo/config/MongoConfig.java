@@ -17,6 +17,7 @@ import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
 import org.springframework.data.mongodb.config.EnableMongoAuditing;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
+import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import java.util.ArrayList;
@@ -70,5 +71,10 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
     @Bean
     public MongoTransactionManager transactionManager(MongoDbFactory mongoDbFactory){
         return new MongoTransactionManager(mongoDbFactory);
+    }
+
+    @Bean
+    public GridFsTemplate gridFsTemplate() throws Exception {
+        return new GridFsTemplate(mongoDbFactory(), mappingMongoConverter());
     }
 }

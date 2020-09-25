@@ -34,4 +34,22 @@ public class UserApi {
                     .build();
         }
     }
+
+    @PutMapping("/success/{name}/{age}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public User updateUserAgeSuccess(@PathVariable String name, @PathVariable Integer age){
+        return userService.updateUserAgeSuccess(name, age);
+    }
+
+    @PutMapping("/fail/{name}/{age}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public User updateUserAgeFail(@PathVariable String name, @PathVariable Integer age){
+        try {
+            return userService.updateUserAgeFail(name, age);
+        }catch(Exception e){
+            return User.builder()
+                    .name("Fail")
+                    .build();
+        }
+    }
 }

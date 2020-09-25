@@ -57,6 +57,11 @@ public class User {
         this.name = name;
     }
 
+    public User modifyAge(Integer age){
+        this.age = age;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "User{" +
