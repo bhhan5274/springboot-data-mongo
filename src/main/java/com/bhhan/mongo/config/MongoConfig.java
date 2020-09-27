@@ -32,7 +32,7 @@ import java.util.List;
 
 @Configuration
 @EnableMongoAuditing
-@EnableMongoRepositories(basePackages = "com.bhhan.mongo.repository")
+@EnableMongoRepositories(basePackages = {"com.bhhan.mongo.repository", "com.bhhan.mongo.file.model"})
 public class MongoConfig extends AbstractMongoClientConfiguration {
     @Override
     protected String getDatabaseName() {
